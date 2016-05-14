@@ -1,0 +1,24 @@
+{
+    "name": "My Extension",
+    "version": "0.1",
+    "manifest_version": 2,
+    "background": {
+        "scripts": ["script/zepto.min.js", "script/script.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://*/*", "https://*/*"],
+            "js": ["script/zepto.min.js", "script/content-script.js"],
+            "css": ["style/style.css"]
+        }
+    ],
+    "description": "Gets information from Google.",
+    "icons": { "128": "icon_128.png" },
+    "permissions": ["http://*.iciba.com/"],
+        "browser_action": {
+            "default_title": "iciba",
+            "default_icon": "icon_128.png",
+            "default_popup": "popup.html"
+        }
+}

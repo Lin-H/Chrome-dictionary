@@ -1,0 +1,13 @@
+#_dictionary {
+    display: none;
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    z-index: 999;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    border: 1px solid #B4BEC7;
+    padding: 8px;
+    font-size: 14px;
+    color: #4d4e53;
+}

@@ -16,9 +16,12 @@
     "description": "Gets information from Google.",
     "icons": { "128": "icon_128.png" },
     "permissions": ["http://*.iciba.com/"],
-        "browser_action": {
-            "default_title": "iciba",
-            "default_icon": "icon_128.png",
-            "default_popup": "popup.html"
-        }
+    "browser_action": {
+        "default_title": "iciba",
+        "default_icon": "icon_128.png",
+        "default_popup": "popup.html"
+    },
+    "web_accessible_resources": [
+        "images/volume-medium.svg"
+    ]
 }

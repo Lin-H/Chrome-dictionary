@@ -23,5 +23,6 @@
     },
     "web_accessible_resources": [
         "images/volume-medium.svg"
-    ]
+    ],
+    "content_security_policy": "media-src http://*.iciba.com; script-src 'self'; object-src 'self'"
 }

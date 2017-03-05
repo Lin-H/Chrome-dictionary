@@ -3,13 +3,13 @@
     "version": "0.1",
     "manifest_version": 2,
     "background": {
-        "scripts": ["script/zepto.min.js", "script/script.js"],
+        "scripts": ["script/bliss.min.js", "script/script.js"],
         "persistent": false
     },
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],
-            "js": ["script/zepto.min.js", "script/content-script.js"],
+            "js": ["script/bliss.min.js", "script/content-script.js"],
             "css": ["style/style.css"]
         }
     ],

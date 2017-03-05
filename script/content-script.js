@@ -1,9 +1,12 @@
-$('body').append('<div id="_dictionary"></div>');
+$('body').appendChild($.create('div', {
+    id: '_dictionary'
+}));
 var selection = window.getSelection(),
     dialog = $('#_dictionary'),
     content;
 
-dialog.on('click', function(e) {
+dialog.addEventListener('click', function(e) {
+    e.stopPropagation();
     return false;
 });
 
@@ -18,23 +21,35 @@ document.onkeyup = function(event) {
 };
 
 function iciba(response) {
-    content = '<p>英[' + response.content.ph_en + ']<span class="_icon" data-audio="' + response.content.ph_en_mp3 + '"></span>';
-    content += '美[' + response.content.ph_am + ']<span class="_icon" data-audio="' + response.content.ph_am_mp3 + '"></span></p>';
+    content = `<p>英[${response.content.ph_en}] `;
+    if (response.content.ph_en_mp3) {
+        content += `<span class="_icon" data-audio="${response.content.ph_en_mp3}"></span>`;
+    }
+    content += `美[${response.content.ph_am}] `;
+    if (response.content.ph_am_mp3) {
+        content += `<span class="_icon" data-audio="${response.content.ph_am_mp3}"></span></p>`;
+    } else {
+        content += '</p>'
+    }
     content += response.content.word_mean.join('<br/>');
-    dialog.html(content);
+    dialog.innerHTML = content;
 
-    $('span._icon').on('click', function(e) {
+    $$('span._icon')._.events({'click': function(e) {
         chrome.extension.sendMessage({
             type: 'playsound',
             audioSrc: e.currentTarget.dataset.audio
         });
         return false;
-    });
+    }});
     document.addEventListener('click', hideDialog);
-    dialog.show();
+    dialog._.style({
+        display: 'block'
+    });
 }
 
 function hideDialog(event) {
-    dialog.hide();
+    dialog._.style({
+        display: 'none'
+    });
     document.removeEventListener('click', hideDialog);
 }
